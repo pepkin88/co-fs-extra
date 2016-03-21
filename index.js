@@ -4,7 +4,6 @@
  */
 
 var thunkify = require('thunkify-wrap');
-var stream = require('co-from-stream');
 var methods = require('./methods');
 var fs = require('fs-extra');
 
@@ -23,10 +22,5 @@ exports.exists = function (path) {
   };
 };
 
-// .createReadStream
-
-exports.createReadStream = function () {
-  return stream(fs.createReadStream.apply(null, arguments));
-};
 
 thunkify(module.exports, methods);
